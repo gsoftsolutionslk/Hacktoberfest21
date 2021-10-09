@@ -1,0 +1,42 @@
+
+            for(int j=0;j<NoOfSub;j++){             // Converstion of Char Grades into Marks using if Method But didnt work for me
+                if(studentMark[j].toLowerCase() == "a" || studentMark[j].toLowerCase() == "a+"){
+                    tMark +=4.0f;
+                }
+                else if(studentMark[j].toLowerCase() == "a-" ){
+                    tMark +=3.7f;
+                }
+                else if(studentMark[j].toLowerCase() == "b+" ){
+                    tMark +=3.3f;
+                }
+                else if(studentMark[j].toLowerCase() == "b" ){
+                    tMark +=3.0f;
+                }
+                else if(studentMark[j].toLowerCase() == "b-" ){
+                    tMark +=2.7f;
+                }
+                else if(studentMark[j].toLowerCase() == "c+" ){
+                    tMark +=2.3f;
+                }
+                else if(studentMark[j].toLowerCase() == "c" ){
+                    tMark +=2.0f;
+                }
+                else if(studentMark[j].toLowerCase() == "c-" ){
+                    tMark +=1.7f;
+                }
+                else if(studentMark[j].toLowerCase() == "a-" ){
+                    tMark +=3.7f;
+                }
+                else if(studentMark[j].toLowerCase() == "d+" ){
+                    tMark +=1.3f;
+                }
+                else if(studentMark[j].toLowerCase() == "d" ){
+                    tMark +=1f;
+                }
+                else if(studentMark[j].toLowerCase() == "e" ){
+                    tMark +=0f;
+                }
+                else{
+                    System.out.println("Wrong Input.");
+                }
+             } 
