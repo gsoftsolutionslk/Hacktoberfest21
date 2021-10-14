@@ -1,86 +1,96 @@
-class Sort 
+class MergeSort 
 {
-    void merge(int arr[], int left, int middle, int right)
+    
+    
+     
+    void merge(int arr[], int l, int m, int r)
     {
-        int low = middle - left + 1;                     
-        int high = right - middle;                      //size of the right 
- 
-        int L[] = new int[low];                             //create the left  
-        int R[] = new int[high];
-
+       
+        int n1 = m - l + 1;
+        int n2 = r - m;
+  
+        /* Create arrays */
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+  
+        /*Copy data to  arrays*/
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+  
+         
+  
+        // Initial indexes of first and second sub-arrays
         int i = 0, j = 0;
- 
-        for (i = 0; i < low; i++)                               //copy elements into left subarray
-        {
-            L[i] = arr[left + i];
-        }
-        for (j = 0; j < high; j++)                              //copy elements into right subarray
-        {
-            R[j] = arr[middle + 1 + j];
-        }
-        
- 
-        int k = left;                                         
-        i = 0;                                             //reset loop variables before performing merge
-        j = 0;
-
-        while (i < low && j < high)                   
-        {
-            if (L[i] <= R[j]) 
-            {
+  
+        // Initial index of merged subarray array
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
                 arr[k] = L[i];
                 i++;
             }
-            else 
-            {
+            else {
                 arr[k] = R[j];
                 j++;
             }
             k++;
         }
- 
-        while (i < low)                             //merge the remaining elements from the left subarray
-        {
+  
+        /* Copy remaining elements of L[] if any */
+        while (i < n1) {
             arr[k] = L[i];
             i++;
             k++;
         }
- 
-        while (j < high)                           //merge the remaining elements from right subarray
-        {
+  
+        /* Copy remaining elements of R[] if any */
+        while (j < n2) {
             arr[k] = R[j];
             j++;
             k++;
         }
     }
- 
-
-    void mergeSort(int arr[], int left, int right)       //helper function that creates the sub cases for sorting
+  
+     
+    // merge()
+    void sort(int arr[], int l, int r)
     {
-        int middle;
-        if (left < right) {                             //sort only if the left index is lesser than the right index (meaning that sorting is done)
-            middle = (left + right) / 2;
- 
-            mergeSort(arr, left, middle);                    //left subarray
-            mergeSort(arr, middle + 1, right);               //right subarray
- 
-            merge(arr, left, middle, right);                //merge the two subarrays
+        if (l < r) {
+            // Find the middle point
+            int m =l+ (r-l)/2;
+  
+            // Sort first and second halves
+            sort(arr, l, m);
+            sort(arr, m + 1, r);
+  
+            // Merge the sorted halves
+            merge(arr, l, m, r);
         }
     }
- 
-    void display(int arr[])                 //display the array
-    {  
-        for (int i=0; i<arr.length; ++i) 
-        {
-            System.out.print(arr[i]+" ");
-        } 
-    } 
-
+  
+    
+    static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i = 0; i < n; ++i)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+  
+    // Driver code
     public static void main(String args[])
     {
-        int arr[] = { 9, 3, 1, 5, 13, 12 };
-        Sort ob = new Sort();
-        ob.mergeSort(arr, 0, arr.length - 1);
-        ob.display(arr);
+        int arr[] = { 12, 11, 13, 5, 6, 7 };
+  
+        System.out.println("Given Array");
+        printArray(arr);
+  
+        MergeSort ob = new MergeSort();
+        ob.sort(arr, 0, arr.length - 1);
+  
+        System.out.println("\nSorted array");
+        printArray(arr);
     }
 }
