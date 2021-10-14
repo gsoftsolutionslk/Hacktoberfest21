@@ -1,49 +1,86 @@
-#include<stdio.h>
-
-void sort(int arr[][20], int n, int m) {
-	int i, j, temp;
-
-	for (i = 0; i < n * m - 1; ++i) {
-		for (j = 0; j < n * m - 1 - i; ++j) {
-			
-			if (arr[j / m][j % m] > arr[(j + 1) / m][(j + 1) % m]) {
-
-				temp = arr[(j + 1) / m][(j + 1) % m];
-				arr[(j + 1) / m][(j + 1) % m] = arr[j / m][j % m];
-				arr[j / m][j % m] = temp;
-
-			}
-		}
-	}
-
-}
-
-void display(int arr[][20], int n, int m) {
-	int i, j;
-	for (i = 0; i < n; ++i) {
-		for (j = 0; j < m; ++j) {
-			printf("%d ", arr[i][j]);
-		}
-		printf("\n");
-	}
-}
-
-int main()
-{
-	int n, m;
-	int i, j;
-	int arr[20][20];
-	printf("Enter Number of Rows: ");
-	scanf("%d", &n);
-	printf("Enter Number of Columns: ");
-	scanf("%d", &m);
-	printf("Enter Array Elements\n");
-	for (i = 0; i < n; ++i) {
-		for (j = 0; j < m; ++j) {
-			scanf("%d", &arr[i][j]);
-		}
-	}
-	sort(arr, n, m);
-	printf("\nArray After Sorting: ");
-	display(arr, n, m);
-}
+#include<stdio.h> 
+#include<conio.h> 
+void main() 
+ 
+{ 
+     
+    int arr[3][3],b[9]; 
+    int i,j,k=0,temp; 
+    clrscr(); 
+ 
+    printf("\nEnter the elements of the array:\n"); 
+    
+    for(i=0;i<3;++i) 
+    { 
+     	printf("\n"); 
+	    for(j=0;j<3;++j) 
+	    scanf("%d",&arr[i][j]); 
+    } 
+ 
+    printf("\nThe elements entered are :\n"); 
+ 
+    for(i=0;i<3;++i) 
+    { 
+	   for(j=0;j<3;++j) 
+	   { 
+	       printf("%d ",arr[i][j]); 
+	   } 
+	   printf("\n"); 
+    } 
+ 
+    for(i=0;i<3;i++)  
+    { 
+	    for(j=0;j<3;j++) 
+     	b[k++]=arr[i][j]; 
+    } 
+ 
+    printf("\nEntered 1-D Matrix is:\n"); 
+ 
+    for(k=0;k<9;k++) 
+    printf("%d ",b[k]); 
+ 
+    for (i=0;i<9;i++) 
+    { 
+ 	    for (j=0;j<(8-i);j++) 
+	    { 
+   	        if(b[j]>b[j+1]) 
+	        { 
+	         	temp = b[j]; 
+	        	b[j] = b[j+1]; 
+		        b[j+1] = temp; 
+	        } 
+	    } 
+    } 
+ 
+    printf("\n\nSorted array is:\n"); 
+ 
+    for(i=0;i<9;i++) 
+    { 
+	    printf("%d ", b[i]); 
+    } 
+ 
+    k=0; 
+    for(i=0;i<3;i++) 
+    { 
+	    for(j=0;j<3;j++) 
+	    { 
+	        arr[i][j]=b[k]; 
+	        k++; 
+	    } 
+ 
+    } 
+    
+    printf("\n\n2D Sorted Array is:\n"); 
+ 
+    for(i=0;i<3;i++) 
+    { 
+	    for(j=0;j<3;j++) 
+	    { 
+            printf("%d ",arr[i][j]); 
+	    } 
+    	printf("\n"); 
+    } 
+ 
+    getch(); 
+ 
+} 
