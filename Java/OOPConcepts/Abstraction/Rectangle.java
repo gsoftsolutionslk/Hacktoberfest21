@@ -1,0 +1,29 @@
+package Java.OOPConcepts.Abstraction; /*
+ * @Created 14/10/2021/ - 10:45 pm/
+ * @project Hacktoberfest21
+ * @author sanc on
+ */
+
+class Rectangle extends Shape {
+
+    double length;
+    double width;
+
+    public Rectangle(String color, double length,
+                     double width)
+    {
+        // calling Shape constructor
+        super(color);
+        System.out.println("Rectangle constructor called");
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override double area() { return length * width; }
+
+    @Override public String toString()
+    {
+        return "Rectangle color is " + super.getColor()
+                + "and area is : " + area();
+    }
+}
