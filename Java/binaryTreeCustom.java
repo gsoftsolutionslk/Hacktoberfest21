@@ -1,5 +1,3 @@
-package com.company;
-
 public class binaryTreeCustom {
     public static void main(String[] args) {
        Node n1 = new Node(5);
