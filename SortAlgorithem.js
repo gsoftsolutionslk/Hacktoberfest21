@@ -1,21 +1,25 @@
-function bubbleSort(arr){
+function selectionSort(arr) {
+    let min;
 
-    //Outer pass
-    for(let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
 
-        //Inner pass
-        for(let j = 0; j < arr.length - i - 1; j++){
+        min = i;
 
-            //Value comparison using ascending order
 
-            if(arr[j + 1] < arr[j]){
-
-                //Swapping
-                [arr[j + 1],arr[j]] = [arr[j],arr[j + 1]]
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[min]) {
+                min = j;
             }
         }
-    };
-    return arr;
-};
 
-console.log(bubbleSort([5,3,8,4,6]));
+
+        if (min !== i) {
+
+            [arr[i], arr[min]] = [arr[min], arr[i]];
+        }
+    }
+
+    return arr;
+}
+
+console.log(selectionSort([29, 72, 98, 13, 87, 66, 52, 51, 36]));
